@@ -1,6 +1,6 @@
 {
     "description": "Google Guice integraton for Vert.x",
     "author": "Jonathan Wagner",
-    "keywords": ["guice", "dependency injection"]
+    "keywords": ["guice", "dependency injection"],
     "licenses": ["The Apache Software License Version 2.0"]
 }
