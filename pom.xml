@@ -7,7 +7,23 @@
     <version>1.0.0-beta1</version>
     <packaging>jar</packaging>
     <name>Guice Integration for Vert.x</name>
-    <url>http://maven.apache.org</url>
+    <url>https://github.com/tigeba/mod-guice</url>
+    <inceptionYear>2013</inceptionYear>
+
+    <scm>
+        <connection>scm:git:https://github.com/tigeba/mod-guice.git</connection>
+        <developerConnection>scm:git:https://github.com/tigeba/mod-guice.git</developerConnection>
+        <url>https://github.com/tigeba/mod-guice</url>
+    </scm>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <vertx.pullindeps>false</vertx.pullindeps>
@@ -28,6 +44,7 @@
         <junit.version>4.11</junit.version>
         <guava.version>14.0.1</guava.version>
     </properties>
+
     <dependencies>
         <!--Vertx provided dependencies-->
         <dependency>
@@ -71,14 +88,16 @@
     </dependencies>
 
     <distributionManagement>
-        <repository>
-            <id>aos-killbot-release</id>
-            <url>http://killbot.corp.alienos.com/nexus/content/repositories/aos-killbot-release/</url>
-        </repository>
         <snapshotRepository>
-            <id>aos-killbot-snapshot</id>
-            <url>http://killbot.corp.alienos.com/nexus/content/repositories/aos-killbot-snapshot/</url>
+            <id>sonatype-nexus-snapshots</id>
+            <name>Sonatype Nexus snapshot repository</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
+        <repository>
+            <id>sonatype-nexus-staging</id>
+            <name>Sonatype Nexus release repository</name>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
     </distributionManagement>
 
     <build>
@@ -244,8 +263,49 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.2.2</version>
+                <configuration>
+                    <arguments>-Dgpg.passphrase=${gpg.passphrase}</arguments>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>release-sign-artifacts</id>
+            <activation>
+                <property>
+                    <name>performRelease</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.4</version>
+                        <configuration>
+                            <passphrase>${gpg.passphrase}</passphrase>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
     <reporting>
         <plugins>
             <plugin>
