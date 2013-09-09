@@ -29,7 +29,7 @@ public abstract class GuiceVerticle extends Verticle {
     }
 
     @Override
-    public void start(org.vertx.java.core.Future<Void> startedResult) {
+    public final void start(org.vertx.java.core.Future<Void> startedResult) {
         GuiceVerticleHelper.inject(this, vertx, container);
         onStart(startedResult);
     }
@@ -43,6 +43,7 @@ public abstract class GuiceVerticle extends Verticle {
 
     /**
      * Implement onStart(future) in lieu of the standard Verticle.start(future)
+     *
      * @param startedResult
      */
     public void onStart(org.vertx.java.core.Future<Void> startedResult) {

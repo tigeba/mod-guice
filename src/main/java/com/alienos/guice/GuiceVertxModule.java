@@ -21,6 +21,9 @@ import com.google.inject.Module;
 import org.vertx.java.core.Vertx;
 import org.vertx.java.platform.Container;
 
+/**
+ * The module used by GuiceVertx
+ */
 public class GuiceVertxModule implements Module {
 
     private final Vertx vertx;

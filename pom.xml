@@ -8,14 +8,8 @@
     <packaging>jar</packaging>
     <name>Guice Integration for Vert.x</name>
     <url>https://github.com/tigeba/mod-guice</url>
+    <description>Guice Integration for Vert.x</description>
     <inceptionYear>2013</inceptionYear>
-
-    <scm>
-        <connection>scm:git:https://github.com/tigeba/mod-guice.git</connection>
-        <developerConnection>scm:git:https://github.com/tigeba/mod-guice.git</developerConnection>
-        <url>https://github.com/tigeba/mod-guice</url>
-    </scm>
-
     <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>
@@ -23,6 +17,18 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
+    <developers>
+        <developer>
+            <id>tigeba</id>
+            <name>Jonathan Wagner</name>
+            <email>tigeba@altereality.com</email>
+        </developer>
+    </developers>
+    <scm>
+        <connection>scm:git:https://github.com/tigeba/mod-guice.git</connection>
+        <developerConnection>scm:git:https://github.com/tigeba/mod-guice.git</developerConnection>
+        <url>https://github.com/tigeba/mod-guice</url>
+    </scm>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -263,6 +269,48 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- Cause sources to be attached for deploys -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>javadoc</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <!-- explicitly define maven-deploy-plugin after other to force exec order -->
+                <artifactId>maven-deploy-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>deploy</id>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>deploy</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
@@ -306,6 +354,7 @@
             </build>
         </profile>
     </profiles>
+
     <reporting>
         <plugins>
             <plugin>

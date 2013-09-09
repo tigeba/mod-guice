@@ -20,8 +20,7 @@ import org.vertx.java.core.Vertx;
 import org.vertx.java.platform.Container;
 
 /**
- * Have your modules implement VertxModule so all the Container and Vertx injection
- * can happen properly.
+ * Implement VertxModule instead of Module to allow the Container and Vertx instance to be injected
  */
 public interface VertxModule extends Module {
     //TODO Possibly use assisted inject here instead..?

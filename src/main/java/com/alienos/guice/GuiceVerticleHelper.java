@@ -25,6 +25,9 @@ import org.vertx.java.platform.Verticle;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A helper class that creates the injector and performs the injection.
+ */
 public class GuiceVerticleHelper {
 
     /**
