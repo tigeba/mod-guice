@@ -43,10 +43,10 @@
         <maven.surefire.report.plugin.version>2.14</maven.surefire.report.plugin.version>
         <maven.javadoc.plugin.version>2.9</maven.javadoc.plugin.version>
         <maven.dependency.plugin.version>2.7</maven.dependency.plugin.version>
-        <vertx.version>2.0.0-final</vertx.version>
-        <vertx.testtools.version>2.0.0-final</vertx.testtools.version>
-        <maven.vertx.plugin.version>2.0.0-final</maven.vertx.plugin.version>
-        <guice.version>3.0</guice.version>
+        <vertx.version>2.1RC3</vertx.version>
+        <vertx.testtools.version>2.0.3-final</vertx.testtools.version>
+        <maven.vertx.plugin.version>2.0.3-final</maven.vertx.plugin.version>
+        <guice.version>4.0-beta4</guice.version>
         <junit.version>4.11</junit.version>
         <guava.version>14.0.1</guava.version>
     </properties>

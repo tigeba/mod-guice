@@ -40,7 +40,6 @@ public class SomeModule implements VertxModule {
 
     @Override
     public void configure(Binder binder) {
-
         binder.bind(SomeInjectedClass.class);
         binder.bindConstant().annotatedWith(Names.named("foo")).to(container.config().getString("foo"));
     }
