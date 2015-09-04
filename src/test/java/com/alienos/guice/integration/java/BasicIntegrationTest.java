@@ -42,10 +42,7 @@ public class BasicIntegrationTest {
 
     @Before
     public void beforeEach(TestContext context) {
-
-        System.out.println("BEFORED!");
         VertxOptions options = new VertxOptions();
-
         Vertx vertx = Vertx.vertx();
         ArrayList<Module> mods = new ArrayList<>();
         SomeModule mod = new SomeModule();
@@ -59,7 +56,7 @@ public class BasicIntegrationTest {
 
     @After
     public void afterEach(TestContext context) {
-        System.out.println("AFTERED");
+        //nada
     }
 
     /**

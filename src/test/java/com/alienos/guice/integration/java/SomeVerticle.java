@@ -38,7 +38,6 @@ public class SomeVerticle extends AbstractVerticle {
     public void start() {
 
         TestContext context = TestContextHelper.getContext();
-
         context.assertEquals("foo", "foo");
         context.assertNotNull(injected);
         context.assertNotNull(configParamFoo);

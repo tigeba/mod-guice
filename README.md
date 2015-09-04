@@ -47,11 +47,6 @@ public class MyVerticle extends GuiceVerticle {
 }
 ```
 
-Make sure that you include the name of the module in your [mod.xml for any module that needs to use mod-guice](http://vertx.io/mods_manual.html).
-
-```
-com.alienos.vertx~mod-guice~1.0.0-beta1
-```
 
 
 ### But wait, my Verticles already inherit from some other class!
